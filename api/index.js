@@ -1,17 +1,10 @@
-import express from 'express';
+const http = require('http');
 
-const PORT = process.env.PORT || 3010;
-const app = express();
-
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin-dev', '*');
-    next();
-});
-
-app.get('/api/items', (req, res) => {
-    console.log(`Server listening on ${PORT}`);
+const server = http.createServer((req, res) => {
+	res.write('Hello world!')
+	res.end()
 })
 
-app.listen(PORT, ()=> {
-    console.log(`Server listening on ${PORT}`);
-});
+server.listen(3010, () => {
+	console.log('Server running on port 3010')
+})
